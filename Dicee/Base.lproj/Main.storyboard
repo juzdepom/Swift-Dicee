@@ -45,7 +45,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQB-IW-11J">
                                 <rect key="frame" x="115" y="478" width="90" height="50"/>
-                                <color key="backgroundColor" red="0.88921440972222221" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.8901960784313725" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="MQ0-ae-WD9"/>
                                     <constraint firstAttribute="width" constant="90" id="WW2-09-1va"/>
@@ -84,6 +84,7 @@
                     <connections>
                         <outlet property="diceImageView1" destination="DG7-jF-BVH" id="JxL-Tx-E02"/>
                         <outlet property="diceImageView2" destination="A2d-3P-5yb" id="IDk-yC-raF"/>
+                        <outlet property="rollButton" destination="TQB-IW-11J" id="agg-aH-Hni"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

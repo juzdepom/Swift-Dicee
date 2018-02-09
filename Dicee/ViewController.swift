@@ -17,6 +17,10 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var diceImageView1: UIImageView!
     @IBOutlet weak var diceImageView2: UIImageView!
+    @IBOutlet weak var rollButton: UIButton!
+    
+    var orange = UIColor(red:0.89, green:0.40, blue:0.40, alpha:1.0)
+    var darkOrange = UIColor(red:0.70, green:0.40, blue:0.40, alpha:1.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,16 +28,46 @@ class ViewController: UIViewController {
     }
 
     @IBAction func rollButtonPressed(_ sender: UIButton) {
-        updateDiceImages()
+        roll()
     }
     
     func updateDiceImages(){
-        randomDiceIndex1 = Int(arc4random_uniform(4))
-        randomDiceIndex2 = Int(arc4random_uniform(4))
+        self.randomDiceIndex1 = Int(arc4random_uniform(4))
+        self.randomDiceIndex2 = Int(arc4random_uniform(4))
         
-        diceImageView1.image = diceArray[randomDiceIndex1]
-        diceImageView2.image = diceArray[randomDiceIndex2]
+        self.diceImageView1.image = self.diceArray[self.randomDiceIndex1]
+        self.diceImageView2.image = self.diceArray[self.randomDiceIndex2]
+    }
+    
+    func roll(){
+        rollButton.isEnabled = false
+        rollButton.backgroundColor = darkOrange
+        rollButton.setTitleColor(UIColor.brown, for: .normal)
+        let i = Double(0.3);
+        self.updateDiceImages()
+        delay(i){
+            self.updateDiceImages()
+            self.delay(i){
+                self.updateDiceImages()
+                self.delay(i){
+                    self.updateDiceImages()
+                    self.rollButton.isEnabled = true;
+                    self.rollButton.backgroundColor = self.orange
+                    self.rollButton.setTitleColor(UIColor.white, for: .normal)
+                }
+            }
+        }
         
+    }
+    
+    func delay(_ delay:Double, closure:@escaping ()->()) {
+        DispatchQueue.main.asyncAfter(
+            deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
+    }
+
+//    detect if iphone has been shaken
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        roll()
     }
 
     
